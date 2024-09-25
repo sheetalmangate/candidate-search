@@ -26,7 +26,7 @@ const CandidateSearch = () => {
 
     const data:Candidate = await searchGithubUser(userName);
     setCurrentCandidate(data);
-    // console.log( data );
+    
   }
 
   const addToCandidateList = async(isSelected:boolean) => {
