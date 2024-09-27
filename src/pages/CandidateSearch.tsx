@@ -24,25 +24,25 @@ const CandidateSearch = () => {
 
   const getUser = async(userName:string) => {
 
-    const data:Candidate = await searchGithubUser(userName);
+    const data = await searchGithubUser(userName);
     setCurrentCandidate(data);
-    
+
   }
 
   const addToCandidateList = async(isSelected:boolean) => {
 
     if(isSelected) {
-        //localstorage
-        let parsedCandidate:Candidate[] = [];
-        const storedCandidate = localStorage.getItem('candidates');
-        if( typeof storedCandidate === 'string'  ) {
+        //save candidate to localstorage
+        let parsedCandidates:Candidate[] = [];
+        const savedCandidates = localStorage.getItem('candidates');
+        if( typeof savedCandidates === 'string'  ) {
 
-          parsedCandidate = JSON.parse(storedCandidate);
+          parsedCandidates = JSON.parse(savedCandidates);
 
         }
 
-        parsedCandidate.push(currentCandidate);
-        localStorage.setItem('candidates', JSON.stringify(parsedCandidate));
+        parsedCandidates = [...parsedCandidates, currentCandidate ];
+        localStorage.setItem('candidates', JSON.stringify(parsedCandidates));
 
     }
 
